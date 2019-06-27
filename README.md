@@ -49,3 +49,9 @@ _______
 - Multiple power ups
 - Fun sound effects
 - Easy scalability/program extensions, due to OOP and the concept of encapsulation
+
+________
+
+### Pictures
+
+
