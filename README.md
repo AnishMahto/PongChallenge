@@ -15,7 +15,7 @@ The application itself is made using HTML, CSS, JavaScript, and jQuery. Furtherm
 
 #### Running Unit Tests:
 - Open extracted folder
-- Navigate to the `PointClickCare_Pong_Challene` folder
+- Navigate to the `PointClickCare_Pong_Challenge` folder
 - Navigate to the `jasmine` folder
 - Navigate to the `jasmine-standalone-3.4.0` folder
 - Open the `pongUnitTesting.html` file with any browser (however, tested using chrome and firefox)
