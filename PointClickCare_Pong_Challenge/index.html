@@ -1,0 +1,190 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>Pong - Anish Mahto</title>
+  <meta name="description" content="Pong Game">
+  <meta name="author" content="Anish Mahto">
+
+  <link rel="shortcut icon" href="images/favicon2.png" style="border-radius: 20px;"/>
+  
+  <link rel="stylesheet" href="styles/index.css?v=1.0">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+  
+<!--  Bootstrap CSS CDN-->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  
+</head>
+
+<body>
+  
+<!--
+  <audio controls>
+    <source src="horse.mp3" type="audio/mpeg" preload="auto";>
+    Your browser does not support the audio element.
+  </audio>
+-->
+  
+  <audio src="music/impact_thud_wobble.mp3" type="audio/mpeg" preload="auto" id="impactThudWobble"></audio>
+  <audio src="music/power_up_1.mp3" type="audio/mpeg" preload="auto" id="powerUp1"></audio>
+  <audio src="music/game_start_1.mp3" type="audio/mpeg" preload="auto" id="gameStart1"></audio>
+  <audio src="music/game_start_2.mp3" type="audio/mpeg" preload="auto" id="gameStart2"></audio>
+  <audio src="music/goal_sound_1.mp3" type="audio/mpeg" preload="auto" id="goalSound1"></audio>
+  
+  <div id="welcomePage" class="container-fluid">
+    <div class="row">
+      
+      <div id="welcomeBanner" class="col-xs-12 col-lg-3">
+        <div class="display-1"><span class="title">Pong</span>.</div>
+        <div class="display-4" style="max-width: 450px;font-weight: 900;">A modern browser remake of a classic game.</div>
+        <br>
+        <div class="h3" id="author">Anish Mahto</div>
+      </div>
+      
+      <div class="col-xs-12 col-lg-1"></div>
+      
+      <div class="col-xs-12 col-lg-4 controlsCol">
+        <table class="col-xs-12">
+          <tr>
+            <td class="controlsTableHeader">Player 1</td>
+          </tr>
+          <tr>
+            <td><div class="key">W</div></td>
+          </tr>
+          <tr>
+            <td class="controlsTableText"><strong style="color:black;">Tap</strong> to Accelerate Paddle Up</td>
+          </tr>
+          <tr>
+            <td><div class="key">S</div></td>
+          </tr>
+          <tr>
+            <td class="controlsTableText"><strong style="color:black;">Tap</strong> to Accelerate Paddle Down</td>
+          </tr>
+          <tr>
+            <td><div class="key">P</div></td>
+          </tr>
+          <tr>
+            <td class="controlsTableText"><strong style="color:black;">Tap</strong> to Pause/Unpause</td>
+          </tr>
+          <tr>
+            <td><div class="key" style="width:400px;">SPACE</div></td>
+          </tr>
+          <tr>
+            <td class="controlsTableText"><strong style="color:black;">Tap</strong> to Shoot Bullet</td>
+          </tr>
+        </table>        
+      </div>
+      
+      <div class="col-xs-12 col-lg-4 controlsCol">
+        <table class="col-xs-12">
+          <tr>
+            <td class="controlsTableHeader">Player 2</td>
+          </tr>
+          <tr>
+            <td><div class="key">&#8593;</div></td>
+          </tr>
+          <tr>
+            <td class="controlsTableText"><strong style="color:black;">Tap</strong> to Accelerate Paddle Up</td>
+          </tr>
+          <tr>
+            <td><div class="key">&#8595;</div></td>
+          </tr>
+          <tr>
+            <td class="controlsTableText"><strong style="color:black;">Tap</strong> to Accelerate Paddle Down</td>
+          </tr>
+          <tr>
+            <td><div class="key">P</div></td>
+          </tr>
+          <tr>
+            <td class="controlsTableText"><strong style="color:black;">Tap</strong> to Pause/Unpause</td>
+          </tr>
+          <tr>
+            <td><div class="key" style="width:300px;">SHIFT</div></td>
+          </tr>
+          <tr>
+            <td class="controlsTableText"><strong style="color:black;">Tap</strong> to Shoot Bullet</td>
+          </tr>
+        </table>
+      </div>
+      
+    </div>
+  </div>
+  
+  <div class="container-fluid" id="powerUpsBar">
+    <div class="row">
+      <table class="col-xs-12 col-md-3">
+        <tr>
+          <td class="powerUpsDesc" style="border-radius: 5px;">
+            <div class="h5 powerUpsDescHeader">Power-Ups</div>
+            To activate a power-up, shoot it with your bullet once it appears on the board. Becareful, as your bullet takes 5 seconds to reload.
+          </td>
+        </tr>
+      </table>
+      <table class="col-xs-12 col-md-3">
+        <tr>
+          <td class="powerUpsIcon"><img src="images/extendPaddleResized.png" class="iconPic"/></td>
+          <td class="powerUpsDesc">
+            <div class="h5 powerUpsDescHeader">Extend Paddle</div>
+            Extends the length of your paddle by a fixed factor, for 10 seconds.
+          </td>
+        </tr>
+      </table>
+      <table class="col-xs-12 col-md-3">
+        <tr>
+          <td class="powerUpsIcon"><img src="images/forceMultiplierResized.png" class="iconPic"/></td>
+          <td class="powerUpsDesc">
+            <div class="h5 powerUpsDescHeader">Force Multiplier</div>
+            Increases the force your paddle applies on the ball to a fixed value, for 10 seconds.
+          </td>
+        </tr>
+      </table>
+      <table class="col-xs-12 col-md-3">
+        <tr>
+          <td class="powerUpsIcon"><img src="images/extraBallResized.png" class="iconPic"/></td>
+          <td class="powerUpsDesc">
+            <div class="h5 powerUpsDescHeader">Extra Ball</div>
+            Spawns a second ball, for 5 seconds. A maximum of three balls can exist at a time.
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  
+  <div class="container-fluid" id="gameMenuBar">
+    <button type="button" class="btn btn-dark" id="playBtn">Start/Reset Game</button>
+    <button type="button" class="btn btn-dark" id="powerUpsBtn" style="margin-left:5px;">Disable Power-Ups</button>
+    <button type="button" class="btn btn-dark disabled" id="pauseBtn">Pause</button>
+    <button type="button" class="btn btn-primary disabled" id="p1BulletAutoAimBtn">Enable Player 1 Bullet Auto-Aim</button>
+    <button type="button" class="btn btn-primary disabled" id="p2BulletAutoAimBtn">Enable Player 2 Bullet Auto-Aim</button>
+    <button type="button" class="btn btn-danger disabled" id="p1BotBtn">Enable Player 1 Bot</button>
+    <button type="button" class="btn btn-danger disabled" id="p2BotBtn">Enable Player 2 Bot</button>
+  </div>
+  
+  <div class="container-fluid">
+    <div class="row">
+      <canvas id="gameScreen" class="col-12" style="padding:0; margin:0;"></canvas>
+    </div>
+  </div>
+  
+<!--  Load all self-encapsulating classes/files first -->
+  <script src="scripts/configureMusic.js"></script>
+  <script src="scripts/miscFunctions.js"></script>
+  <script src="scripts/PowerUp.js"></script>
+  <script src="scripts/Paddle.js"></script>
+  <script src="scripts/Goal.js"></script>
+  <script src="scripts/Ball.js"></script>
+  
+<!-- Load files that depend on other files after  -->
+  <script src="scripts/Bullet.js"></script>
+  <script src="scripts/index.js"></script>
+  
+<!--  Bootstrap JavaScript CDN-->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  
+  
+</body>
+</html>
