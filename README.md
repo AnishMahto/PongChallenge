@@ -1,5 +1,5 @@
 # Pong Challenge
-Browser based pong game created for PointClickCare's high school coding challenge. THe challenge was to make a pong game, but challengers were given the freedom to add whatever features they liked. I ended up getting a bit carried away...
+Browser based pong game created for PointClickCare's high school coding challenge. The challenge was to make a pong game, but challengers were given the freedom to add whatever features they liked. I ended up getting a bit carried away...
 
 The application itself is made using HTML, CSS, JavaScript, and jQuery. Furthermore, unit testing is done through the Jasmine library for JavaScript.
 
