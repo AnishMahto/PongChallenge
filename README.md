@@ -24,9 +24,9 @@ _______
 
 
 ### Tested Environments
-- Developed in Ubuntu 16.04, using Google Chrome version 75.0.3770.100
-- Tested in Ubuntu 16.04, using Firefox version 67.0.4
-- Tested in Windows 1803 Home edition, using Google Chrome version 75.0.3770.100
+- Developed in Ubuntu 16.04, using **Google Chrome version 75.0.3770.100**
+- Tested in Ubuntu 16.04, using **Firefox version 67.0.4**
+- Tested in Windows 1803 Home edition, using **Google Chrome version 75.0.3770.100**
 
 ### Why HTML, CSS, Bootstrap, and JS/jQuery?
 - Installing the application does not require any pre-installed environment, as these languages are natively supported by all modern web browsers.
@@ -54,4 +54,9 @@ ________
 
 ### Pictures
 
-
+**Game Webpage:**
+![](/PointClickCare_Pong_Challenge_Github_Pictures/pongSplashPage.png)
+![](/PointClickCare_Pong_Challenge_Github_Pictures/pongMenuBar.png)
+![](/PointClickCare_Pong_Challenge_Github_Pictures/pongGamePlay.png)
+**Unit Testing Webpage:**
+![](/PointClickCare_Pong_Challenge_Github_Pictures/jasminePongUnitTesting.png)
